@@ -1,0 +1,2 @@
+SELECT e.name FROM employees AS e WHERE e.id NOT IN 
+(SELECT eTemp.managerId FROM employees AS eTemp WHERE eTemp.managerId IS NOT NULL); 
