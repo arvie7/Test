@@ -1,0 +1,24 @@
+<?php
+class Palindrome
+{
+    public static function isPalindrome($word)
+    {
+		$word = strtolower($word);
+		$split = str_split($word);
+		$result = "True";
+		
+			
+		for($x = 0 ; $x < sizeof($split); $x++){
+			if($split[$x] != $split[sizeof($split)-1-$x]){
+				$result = "False";
+				break;
+			}
+		}
+		
+        return $result;
+    }
+}
+
+echo Palindrome::isPalindrome('Deleveled');
+
+?>
