@@ -1,0 +1,24 @@
+<?php
+class Pipeline
+{
+    public static function make_pipeline(...$funcs)
+    {
+        return function($arg) use ($funcs)
+        {
+            $x = $arg;
+            for($i = 0 ; $i<sizeof($funcs); $i++){
+                
+                $x = $funcs[$i]($x);
+            };
+            return $x;
+        };
+    }
+}
+$fun = Pipeline::make_pipeline( function($x) { return $x * 3; }, 
+								function($x) { return $x + 1; },
+								function($x) { return $x / 2; });
+								//(3 * 3 = 9)
+								//(9 + 1 = 10)
+								//(10 / 2 = 5)
+echo $fun(3); # should print 5
+?>
